@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'secretkey23456';
 
 const pool = new Pool({
-  user: 'pgclbfxueonpqw',
-  host: 'ec2-107-22-195-114.compute-1.amazonaws.com',
-  database: 'de99ij4ngbftp',
-  password: 'aa959f7bbdc34fad97e37da305c3a6eec7b8042c01d1ef85ca2d0bcf85b03760',
+  user: 'stmdpszlfefgwh',
+  host: 'ec2-52-5-176-53.compute-1.amazonaws.com',
+  database: 'ddtbk6el1tmd16',
+  password: 'f0120ea3bfd54157f168fec3beffcdd27730b7e2552253b3cf8765076cd4b6e6',
   port: 5432,
   ssl: true,
 });
