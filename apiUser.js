@@ -24,8 +24,8 @@ const signUp = (request, response) => {
     .digest('hex');
 
   pool.query(
-    'INSERT INTO users(username,password,email) VALUES($1,$2,$3)',
-    [username, hash, email],
+    'INSERT INTO users(username,email,password) VALUES($1,$2,$3)',
+    [username, email, hash],
     (error, results) => {
       if (error) {
         response
@@ -108,7 +108,7 @@ const getProfile = (request, response) => {
   var readingAdvancedTotal = 0;
 
   pool.query(
-    'SELECT user_id, username, email, score, point, custom_avatar, avatar, golden_username FROM users WHERE user_id = $1',
+    'SELECT user_id, username, email, score, point, avatar FROM users WHERE user_id = $1',
     [user_id],
     (error, results) => {
       if (error) {
@@ -276,7 +276,7 @@ const getUserStatus = (request, response) => {
   const user_id = request.body.userId;
 
   pool.query(
-    'SELECT user_id, username, email, score, point, custom_avatar, avatar, golden_username FROM users WHERE user_id = $1',
+    'SELECT user_id, username, email, score, point, avatar FROM users WHERE user_id = $1',
     [user_id],
     (error, results) => {
       if (error) {
@@ -296,7 +296,7 @@ const getShopProgress = (request, response) => {
     j = 0;
 
   pool.query(
-    'SELECT user_id, username, point, avatar, custom_avatar, golden_username FROM users WHERE user_id = $1',
+    'SELECT user_id, username, point, avatar FROM users WHERE user_id = $1',
     [user_id],
     (error, results) => {
       if (error) {
@@ -306,7 +306,7 @@ const getShopProgress = (request, response) => {
       userData = results.rows[0];
 
       pool.query(
-        'SELECT shop_id, name, price, image, category, false AS bought FROM shop ORDER BY price, name',
+        'SELECT shop_id, shop_name, shop_price, shop_image, false AS bought FROM shop ORDER BY shop_price, shop_name',
         (error, results2) => {
           if (error) {
             response.status(200).json({code: 201, message: 'Server error!'});
@@ -353,7 +353,7 @@ const shopCheckout = (request, response) => {
   var priceMinus = 0;
 
   pool.query(
-    'SELECT price FROM shop WHERE shop_id = $1',
+    'SELECT shop_price FROM shop WHERE shop_id = $1',
     [shop_id],
     (error, results) => {
       if (error) {
@@ -361,7 +361,6 @@ const shopCheckout = (request, response) => {
         return;
       }
       priceMinus = results.rows[0].price;
-
       pool.query(
         'INSERT INTO shop_progress(shop_id, user_id) VALUES ($1,$2)',
         [shop_id, user_id],
@@ -370,62 +369,22 @@ const shopCheckout = (request, response) => {
             response.status(200).json({code: 201, message: 'Server error!'});
             return;
           }
-
-          if (shop_id === 1) {
-            pool.query(
-              'UPDATE users SET point = (point - $1), custom_avatar = true WHERE user_id = $2',
-              [priceMinus, user_id],
-              (error, results2) => {
-                if (error) {
-                  response
-                    .status(200)
-                    .json({code: 201, message: 'Server error!'});
-                  return;
-                }
-
-                response.status(200).json({
-                  price_minus: priceMinus,
-                });
+          pool.query(
+            'UPDATE users SET point = (point - $1) WHERE user_id = $2',
+            [priceMinus, user_id],
+            (error, results2) => {
+              if (error) {
+                response
+                  .status(200)
+                  .json({code: 201, message: 'Server error!'});
                 return;
-              },
-            );
-          } else if (shop_id === 5) {
-            pool.query(
-              'UPDATE users SET point = (point - $1), golden_username = true WHERE user_id = $2',
-              [priceMinus, user_id],
-              (error, results2) => {
-                if (error) {
-                  response
-                    .status(200)
-                    .json({code: 201, message: 'Server error!'});
-                  return;
-                }
-
-                response.status(200).json({
-                  price_minus: priceMinus,
-                });
-                return;
-              },
-            );
-          } else {
-            pool.query(
-              'UPDATE users SET point = (point - $1) WHERE user_id = $2',
-              [priceMinus, user_id],
-              (error, results2) => {
-                if (error) {
-                  response
-                    .status(200)
-                    .json({code: 201, message: 'Server error!'});
-                  return;
-                }
-
-                response.status(200).json({
-                  price_minus: priceMinus,
-                });
-                return;
-              },
-            );
-          }
+              }
+              response.status(200).json({
+                price_minus: priceMinus,
+              });
+              return;
+            },
+          );
         },
       );
     },

@@ -344,7 +344,7 @@ const checkAnswer = (request, response) => {
 
 const getLeaderboard = (request, response) => {
   pool.query(
-    'SELECT user_id, username, score, avatar, golden_username FROM users ORDER BY score DESC, username ASC',
+    'SELECT user_id, username, score, avatar FROM users ORDER BY score DESC, username ASC',
     (error, results) => {
       if (error) {
         response.status(200).json({ code: 201, message: 'Server Error!' });
@@ -377,7 +377,7 @@ const insertShop = (request, response) => {
   const price = request.body.price;
   const image = request.body.image;
   pool.query(
-    'insert into shop(name,price,image) values($1,$2,$3)',
+    'insert into shop(shop_name,shop_price,shop_image) values($1,$2,$3)',
     [name, price, image],
     (error, results) => {
       if (error) {
