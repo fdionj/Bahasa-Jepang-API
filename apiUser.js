@@ -306,7 +306,7 @@ const getShopProgress = (request, response) => {
       userData = results.rows[0];
 
       pool.query(
-        'SELECT shop_id, shop_name, shop_price, shop_image, false AS bought FROM shop ORDER BY shop_price, shop_name',
+        'SELECT shop_id, shop_name AS name, shop_price AS price, shop_image AS image, false AS bought FROM shop ORDER BY shop_price, shop_name',
         (error, results2) => {
           if (error) {
             response.status(200).json({code: 201, message: 'Server error!'});
@@ -353,7 +353,7 @@ const shopCheckout = (request, response) => {
   var priceMinus = 0;
 
   pool.query(
-    'SELECT shop_price FROM shop WHERE shop_id = $1',
+    'SELECT shop_price AS price FROM shop WHERE shop_id = $1',
     [shop_id],
     (error, results) => {
       if (error) {
