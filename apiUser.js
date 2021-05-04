@@ -88,24 +88,54 @@ const getProfile = (request, response) => {
   const user_id = request.body.userId;
   var userData = [];
   var listData = [];
-  var vocabularyBeginnerCount = 0;
-  var vocabularyBeginnerTotal = 0;
-  var vocabularyIntermediateCount = 0;
-  var vocabularyIntermediateTotal = 0;
-  var vocabularyAdvancedCount = 0;
-  var vocabularyAdvancedTotal = 0;
-  var grammarBeginnerCount = 0;
-  var grammarBeginnerTotal = 0;
-  var grammarIntermediateCount = 0;
-  var grammarIntermediateTotal = 0;
-  var grammarAdvancedCount = 0;
-  var grammarAdvancedTotal = 0;
-  var readingBeginnerCount = 0;
-  var readingBeginnerTotal = 0;
-  var readingIntermediateCount = 0;
-  var readingIntermediateTotal = 0;
-  var readingAdvancedCount = 0;
-  var readingAdvancedTotal = 0;
+  var hiragana1BeginnerCount = 0;
+  var hiragana1BeginnerTotal = 0;
+  var hiragana1IntermediateCount = 0;
+  var hiragana1IntermediateTotal = 0;
+  var hiragana1AdvancedCount = 0;
+  var hiragana1AdvancedTotal = 0;
+  var hiragana2BeginnerCount = 0;
+  var hiragana2BeginnerTotal = 0;
+  var hiragana2IntermediateCount = 0;
+  var hiragana2IntermediateTotal = 0;
+  var hiragana2AdvancedCount = 0;
+  var hiragana2AdvancedTotal = 0;
+  var hiragana3BeginnerCount = 0;
+  var hiragana3BeginnerTotal = 0;
+  var hiragana3IntermediateCount = 0;
+  var hiragana3IntermediateTotal = 0;
+  var hiragana3AdvancedCount = 0;
+  var hiragana3AdvancedTotal = 0;
+  var katakana1BeginnerCount = 0;
+  var katakana1BeginnerTotal = 0;
+  var katakana1IntermediateCount = 0;
+  var katakana1IntermediateTotal = 0;
+  var katakana1AdvancedCount = 0;
+  var katakana1AdvancedTotal = 0;
+  var katakana2BeginnerCount = 0;
+  var katakana2BeginnerTotal = 0;
+  var katakana2IntermediateCount = 0;
+  var katakana2IntermediateTotal = 0;
+  var katakana2AdvancedCount = 0;
+  var katakana2AdvancedTotal = 0;
+  var katakana3BeginnerCount = 0;
+  var katakana3BeginnerTotal = 0;
+  var katakana3IntermediateCount = 0;
+  var katakana3IntermediateTotal = 0;
+  var katakana3AdvancedCount = 0;
+  var katakana3AdvancedTotal = 0;
+  var tangoBeginnerCount = 0;
+  var tangoBeginnerTotal = 0;
+  var tangoIntermediateCount = 0;
+  var tangoIntermediateTotal = 0;
+  var tangoAdvancedCount = 0;
+  var tangoAdvancedTotal = 0;
+  var kaiwaBeginnerCount = 0;
+  var kaiwaBeginnerTotal = 0;
+  var kaiwaIntermediateCount = 0;
+  var kaiwaIntermediateTotal = 0;
+  var kaiwaAdvancedCount = 0;
+  var kaiwaAdvancedTotal = 0;
 
   pool.query(
     'SELECT user_id, username, email, score, point, avatar FROM users WHERE user_id = $1',
@@ -151,104 +181,269 @@ const getProfile = (request, response) => {
                   listData[i].category_id === 1
                 ) {
                   if (listData[i].level_id === 1) {
-                    vocabularyBeginnerCount += 1;
-                    vocabularyBeginnerTotal += 1;
+                    hiragana1BeginnerCount += 1;
+                    hiragana1BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
-                    vocabularyIntermediateCount += 1;
-                    vocabularyIntermediateTotal += 1;
+                    hiragana1IntermediateCount += 1;
+                    hiragana1IntermediateTotal += 1;
                   } else if (listData[i].level_id === 3) {
-                    vocabularyAdvancedCount += 1;
-                    vocabularyAdvancedTotal += 1;
+                    hiragana1AdvancedCount += 1;
+                    hiragana1AdvancedTotal += 1;
                   }
                 } else if (
                   listData[i].completed === true &&
                   listData[i].category_id === 2
                 ) {
                   if (listData[i].level_id === 1) {
-                    grammarBeginnerCount += 1;
-                    grammarBeginnerTotal += 1;
+                    hiragana2BeginnerCount += 1;
+                    hiragana2BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
-                    grammarIntermediateCount += 1;
-                    grammarIntermediateTotal += 1;
+                    hiragana2IntermediateCount += 1;
+                    hiragana2IntermediateTotal += 1;
                   } else if (listData[i].level_id === 3) {
-                    grammarAdvancedCount += 1;
-                    grammarAdvancedTotal += 1;
+                    hiragana2AdvancedCount += 1;
+                    hiragana2AdvancedTotal += 1;
                   }
                 } else if (
                   listData[i].completed === true &&
                   listData[i].category_id === 3
                 ) {
                   if (listData[i].level_id === 1) {
-                    readingBeginnerCount += 1;
-                    readingBeginnerTotal += 1;
+                    hiragana3BeginnerCount += 1;
+                    hiragana3BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
-                    readingIntermediateCount += 1;
-                    readingIntermediateTotal += 1;
+                    hiragana3IntermediateCount += 1;
+                    hiragana3IntermediateTotal += 1;
                   } else if (listData[i].level_id === 3) {
-                    readingAdvancedCount += 1;
-                    readingAdvancedTotal += 1;
+                    hiragana3AdvancedCount += 1;
+                    hiragana3AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 4
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana1BeginnerCount += 1;
+                    katakana1BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana1IntermediateCount += 1;
+                    katakana1IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana1AdvancedCount += 1;
+                    katakana1AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 5
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana2BeginnerCount += 1;
+                    katakana2BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana2IntermediateCount += 1;
+                    katakana2IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana2AdvancedCount += 1;
+                    katakana2AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 6
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana3BeginnerCount += 1;
+                    katakana3BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana3IntermediateCount += 1;
+                    katakana3IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana3AdvancedCount += 1;
+                    katakana3AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 7
+                ) {
+                  if (listData[i].level_id === 1) {
+                    tangoBeginnerCount += 1;
+                    tangoBeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    tangoIntermediateCount += 1;
+                    tangoIntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    tangoAdvancedCount += 1;
+                    tangoAdvancedTotal += 1;
+                  }
+                }else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 8
+                ) {
+                  if (listData[i].level_id === 1) {
+                    kaiwaBeginnerCount += 1;
+                    kaiwaBeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    kaiwaIntermediateCount += 1;
+                    kaiwaIntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    kaiwaAdvancedCount += 1;
+                    kaiwaAdvancedTotal += 1;
                   }
                 } else if (
                   listData[i].completed === false &&
                   listData[i].category_id === 1
                 ) {
                   if (listData[i].level_id === 1) {
-                    vocabularyBeginnerTotal += 1;
+                    hiragana1BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
-                    vocabularyIntermediateTotal += 1;
+                    hiragana1IntermediateTotal += 1;
                   } else if (listData[i].level_id === 3) {
-                    vocabularyAdvancedTotal += 1;
+                    hiragana1AdvancedTotal += 1;
                   }
                 } else if (
                   listData[i].completed === false &&
                   listData[i].category_id === 2
                 ) {
                   if (listData[i].level_id === 1) {
-                    grammarBeginnerTotal += 1;
+                    hiragana2BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
-                    grammarIntermediateTotal += 1;
+                    hiragana2IntermediateTotal += 1;
                   } else if (listData[i].level_id === 3) {
-                    grammarAdvancedTotal += 1;
+                    hiragana2AdvancedTotal += 1;
                   }
                 } else if (
                   listData[i].completed === false &&
                   listData[i].category_id === 3
                 ) {
                   if (listData[i].level_id === 1) {
-                    readingBeginnerTotal += 1;
+                    hiragana3BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
-                    readingIntermediateTotal += 1;
+                    hiragana3IntermediateTotal += 1;
                   } else if (listData[i].level_id === 3) {
-                    readingAdvancedTotal += 1;
+                    hiragana3AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 4
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana1BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana1IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana1AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 5
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana2BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana2IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana2AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 6
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana3BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana3IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana3AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 7
+                ) {
+                  if (listData[i].level_id === 1) {
+                    tangoBeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    tangoIntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    tangoAdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 8
+                ) {
+                  if (listData[i].level_id === 1) {
+                    kaiwaBeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    kaiwaIntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    kaiwaAdvancedTotal += 1;
                   }
                 }
               }
 
               response.status(200).json({
                 user_data: userData,
-                vocabulary: {
-                  beginner_count: vocabularyBeginnerCount,
-                  beginner_total: vocabularyBeginnerTotal,
-                  intermediate_count: vocabularyIntermediateCount,
-                  intermediate_total: vocabularyIntermediateTotal,
-                  advanced_count: vocabularyAdvancedCount,
-                  advanced_total: vocabularyAdvancedTotal,
+                hiragana1: {
+                  beginner_count: hiragana1BeginnerCount,
+                  beginner_total: hiragana1BeginnerTotal,
+                  intermediate_count: hiragana1IntermediateCount,
+                  intermediate_total: hiragana1IntermediateTotal,
+                  advanced_count: hiragana1AdvancedCount,
+                  advanced_total: hiragana1AdvancedTotal,
                 },
-                grammar: {
-                  beginner_count: grammarBeginnerCount,
-                  beginner_total: grammarBeginnerTotal,
-                  intermediate_count: grammarIntermediateCount,
-                  intermediate_total: grammarIntermediateTotal,
-                  advanced_count: grammarAdvancedCount,
-                  advanced_total: grammarAdvancedTotal,
+                hiragana2: {
+                  beginner_count: hiragana2BeginnerCount,
+                  beginner_total: hiragana2BeginnerTotal,
+                  intermediate_count: hiragana2IntermediateCount,
+                  intermediate_total: hiragana2IntermediateTotal,
+                  advanced_count: hiragana2AdvancedCount,
+                  advanced_total: hiragana2AdvancedTotal,
                 },
-                reading: {
-                  beginner_count: readingBeginnerCount,
-                  beginner_total: readingBeginnerTotal,
-                  intermediate_count: readingIntermediateCount,
-                  intermediate_total: readingIntermediateTotal,
-                  advanced_count: readingAdvancedCount,
-                  advanced_total: readingAdvancedTotal,
+                hiragana3: {
+                  beginner_count: hiragana3BeginnerCount,
+                  beginner_total: hiragana3BeginnerTotal,
+                  intermediate_count: hiragana3IntermediateCount,
+                  intermediate_total: hiragana3IntermediateTotal,
+                  advanced_count: hiragana3AdvancedCount,
+                  advanced_total: hiragana3AdvancedTotal,
+                },
+                katakana1: {
+                  beginner_count: katakana1BeginnerCount,
+                  beginner_total: katakana1BeginnerTotal,
+                  intermediate_count: katakana1IntermediateCount,
+                  intermediate_total: katakana1IntermediateTotal,
+                  advanced_count: katakana1AdvancedCount,
+                  advanced_total: katakana1AdvancedTotal,
+                },
+                katakana2: {
+                  beginner_count: katakana2BeginnerCount,
+                  beginner_total: katakana2BeginnerTotal,
+                  intermediate_count: katakana2IntermediateCount,
+                  intermediate_total: katakana2IntermediateTotal,
+                  advanced_count: katakana2AdvancedCount,
+                  advanced_total: katakana2AdvancedTotal,
+                },
+                katakana3: {
+                  beginner_count: katakana3BeginnerCount,
+                  beginner_total: katakana3BeginnerTotal,
+                  intermediate_count: katakana3IntermediateCount,
+                  intermediate_total: katakana3IntermediateTotal,
+                  advanced_count: katakana3AdvancedCount,
+                  advanced_total: katakana3AdvancedTotal,
+                },
+                tango: {
+                  beginner_count: tangoBeginnerCount,
+                  beginner_total: tangoBeginnerTotal,
+                  intermediate_count: tangoIntermediateCount,
+                  intermediate_total: tangoIntermediateTotal,
+                  advanced_count: tangoAdvancedCount,
+                  advanced_total: tangoAdvancedTotal,
+                },
+                kaiwa: {
+                  beginner_count: kaiwaBeginnerCount,
+                  beginner_total: kaiwaBeginnerTotal,
+                  intermediate_count: kaiwaIntermediateCount,
+                  intermediate_total: kaiwaIntermediateTotal,
+                  advanced_count: kaiwaAdvancedCount,
+                  advanced_total: kaiwaAdvancedTotal,
                 },
               });
             },
