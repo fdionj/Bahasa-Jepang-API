@@ -112,7 +112,7 @@ const getQuestionDetail = (request, response) => {
 
   pool.query(
     'SELECT q.question_id, q.multiple_choice, q.question_desc, q.answer, q.choice1, q.choice2, ' +
-    'q.choice3, q.choice4, q.passage_id, q.category_id, q.level_id, r.passage_desc ' +
+    'q.choice3, q.passage_id, q.category_id, q.level_id, r.passage_desc ' +
     'FROM question q, dialog_passage r ' +
     'WHERE q.question_id = $1 AND q.passage_id = r.passage_id',
     [questionId],
