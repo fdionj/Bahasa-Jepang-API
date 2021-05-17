@@ -32,7 +32,6 @@ const signUp = (request, response) => {
           .status(200)
           .json({code: 201, message: 'Username or Email Already Registered!'});
         return;
-        console.log('Masuk');
       }
       response
         .status(200)
