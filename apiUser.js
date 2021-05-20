@@ -30,12 +30,12 @@ const signUp = (request, response) => {
       if (error) {
         response
           .status(200)
-          .json({code: 201, message: 'Username or Email Already Registered!'});
+          .json({code: 201, message: 'Username atau Email Sudah Dipakai!'});
         return;
       }
       response
         .status(200)
-        .json({code: 200, message: 'Account Successfully Registered!'});
+        .json({code: 200, message: 'Registered!'});
     },
   );
 };
@@ -59,7 +59,7 @@ const signIn = (request, response) => {
       if (results.rows.length == 0) {
         response
           .status(200)
-          .json({code: 201, message: 'Wrong Username/Email or Password!'});
+          .json({code: 201, message: 'Username/Email atau Password Salah!'});
         return;
       }
 
@@ -77,7 +77,7 @@ const signIn = (request, response) => {
         access_token: accessToken,
         user_id: results.rows[0].id,
         expires_in: expiresIn,
-        message: 'Login Success!',
+        message: 'Success!',
         code: 200,
       });
     },
