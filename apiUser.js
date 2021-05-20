@@ -30,14 +30,8 @@ const signUp = (request, response) => {
       if (error) {
         response
           .status(200)
-<<<<<<< HEAD
           .json({code: 201, message: 'Username atau Email Sudah Dipakai!'});
         return;
-=======
-          .json({code: 201, message: 'Username or Email Already Registered!'});
-          console.log('Masuk');
-          return;
->>>>>>> 79486413ccd8c7280452e4475ad605c3c0496bd3
       }
       response
         .status(200)
