@@ -8,6 +8,7 @@ const apiUser = require('./apiUser');
 const cors = require('cors');
 
 app.use(bodyParser.json());
+app.set('trust proxy', 1);
 app.use(cors());
 
 app.use(function(req, res, next) {
