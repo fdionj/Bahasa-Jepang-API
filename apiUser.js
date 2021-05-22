@@ -138,7 +138,7 @@ const getProfile = (request, response) => {
   var kaiwaAdvancedTotal = 0;
 
   pool.query(
-    'SELECT user_id, username, email, score, point, avatar FROM users WHERE user_id = $1',
+    'SELECT user_id, username, email, point, score, avatar FROM users WHERE user_id = $1',
     [user_id],
     (error, results) => {
       if (error) {
@@ -459,7 +459,7 @@ const getAchievement = (request, response) => {
     'SELECT achievement_id, achievement_name, achievement_desc, achievement_image FROM achievement ORDER BY achievement_id',
     (error, results) => {
       if (error) {
-        response.status(200).json({code: 201, message: 'Server error!'});
+        response.status(200).json({code: 201, message: 'Server Error!'});
         return;
       }
       response.status(200).json(results.rows);
@@ -471,11 +471,11 @@ const getUserStatus = (request, response) => {
   const user_id = request.body.userId;
 
   pool.query(
-    'SELECT user_id, username, email, score, point, avatar FROM users WHERE user_id = $1',
+    'SELECT user_id, username, email, point, score, avatar FROM users WHERE user_id = $1',
     [user_id],
     (error, results) => {
       if (error) {
-        response.status(200).json({code: 201, message: 'Server error!'});
+        response.status(200).json({code: 201, message: 'Server Error!'});
         return;
       }
       response.status(200).json(results.rows[0]);
@@ -495,7 +495,7 @@ const getShopProgress = (request, response) => {
     [user_id],
     (error, results) => {
       if (error) {
-        response.status(200).json({code: 201, message: 'Server error!'});
+        response.status(200).json({code: 201, message: 'Server Error!'});
         return;
       }
       userData = results.rows[0];
@@ -504,7 +504,7 @@ const getShopProgress = (request, response) => {
         'SELECT shop_id, shop_name AS name, shop_price AS price, shop_image AS image, false AS bought FROM shop ORDER BY shop_price, shop_name',
         (error, results2) => {
           if (error) {
-            response.status(200).json({code: 201, message: 'Server error!'});
+            response.status(200).json({code: 201, message: 'Server Error!'});
             return;
           }
           shopData = results2.rows;
@@ -516,7 +516,7 @@ const getShopProgress = (request, response) => {
               if (error) {
                 response
                   .status(200)
-                  .json({code: 201, message: 'Server error!'});
+                  .json({code: 201, message: 'Server Error!'});
                 return;
               }
 
@@ -552,7 +552,7 @@ const shopCheckout = (request, response) => {
     [shop_id],
     (error, results) => {
       if (error) {
-        response.status(200).json({code: 201, message: 'Server error!'});
+        response.status(200).json({code: 201, message: 'Server Error!'});
         return;
       }
       priceMinus = results.rows[0].price;
@@ -561,7 +561,7 @@ const shopCheckout = (request, response) => {
         [shop_id, user_id],
         (error, results2) => {
           if (error) {
-            response.status(200).json({code: 201, message: 'Server error!'});
+            response.status(200).json({code: 201, message: 'Server Error!'});
             return;
           }
           pool.query(
@@ -571,7 +571,7 @@ const shopCheckout = (request, response) => {
               if (error) {
                 response
                   .status(200)
-                  .json({code: 201, message: 'Server error!'});
+                  .json({code: 201, message: 'Server Error!'});
                 return;
               }
               response.status(200).json({
@@ -595,7 +595,7 @@ const changeAvatar = (request, response) => {
     [avatar_image, user_id],
     (error, results) => {
       if (error) {
-        response.status(200).json({code: 201, message: 'Server error!'});
+        response.status(200).json({code: 201, message: 'Server Error!'});
         return;
       }
       response.status(200).json({
