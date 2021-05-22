@@ -14,19 +14,11 @@ const pool = new Pool({
 });
 
 const getAllCategory = (request, response) => {
-<<<<<<< HEAD
   pool.query(
     'SELECT category_id AS id, category_name AS name, category_desc AS desc, category_image AS image FROM category ORDER BY category_id',
     (error, results) => {
       if (error) {
         response.status(200).json({ code: 201, message: 'Server Error!' });
-=======
-  return pool.query(
-    'SELECT category_id AS id, category_name AS name, category_desc AS desc, category_image AS image FROM category ORDER BY category_id',
-    (error, results) => {
-      if (error) {
-        return response.status(200).json({ code: 201, message: 'Server Error!' });
->>>>>>> 565880bd43af20248c77ffeea5195d9993bb9c12
         return;
       }
       response.status(200).json(results.rows);
