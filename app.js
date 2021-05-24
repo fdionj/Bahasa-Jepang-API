@@ -7,9 +7,7 @@ const apiUser = require('./apiUser');
 
 const cors = require('cors');
 
-app.use(bodyParser.json());
 app.set('trust proxy', 1);
-app.use(cors());
 
 // app.use(function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -25,6 +23,9 @@ app.use(
     extended: true,
   }),
 );
+app.use(bodyParser.json());
+
+app.use(cors());
 
 app.get('/', (request, response) => {
   response.json({info: 'Node.js, Express, and Postgres API'});
