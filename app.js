@@ -9,6 +9,12 @@ const cors = require('cors');
 
 app.set('trust proxy', 1);
 
+app.options('*', cors()) // include before other routes
+app.use(cors({
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
+
 // app.use(function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
 //   res.header(
@@ -24,11 +30,6 @@ app.use(
   }),
 );
 app.use(bodyParser.json());
-
-app.use(cors({
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}));
 
 app.get('/', (request, response) => {
   response.json({info: 'Node.js, Express, and Postgres API'});
