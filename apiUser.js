@@ -106,6 +106,18 @@ const getProfile = (request, response) => {
   var hiragana3IntermediateTotal = 0;
   var hiragana3AdvancedCount = 0;
   var hiragana3AdvancedTotal = 0;
+  var hiragana4BeginnerCount = 0;
+  var hiragana4BeginnerTotal = 0;
+  var hiragana4IntermediateCount = 0;
+  var hiragana4IntermediateTotal = 0;
+  var hiragana4AdvancedCount = 0;
+  var hiragana4AdvancedTotal = 0;
+  var hiragana5BeginnerCount = 0;
+  var hiragana5BeginnerTotal = 0;
+  var hiragana5IntermediateCount = 0;
+  var hiragana5IntermediateTotal = 0;
+  var hiragana5AdvancedCount = 0;
+  var hiragana5AdvancedTotal = 0;
   var katakana1BeginnerCount = 0;
   var katakana1BeginnerTotal = 0;
   var katakana1IntermediateCount = 0;
@@ -124,6 +136,18 @@ const getProfile = (request, response) => {
   var katakana3IntermediateTotal = 0;
   var katakana3AdvancedCount = 0;
   var katakana3AdvancedTotal = 0;
+  var katakana4BeginnerCount = 0;
+  var katakana4BeginnerTotal = 0;
+  var katakana4IntermediateCount = 0;
+  var katakana4IntermediateTotal = 0;
+  var katakana4AdvancedCount = 0;
+  var katakana4AdvancedTotal = 0;
+  var katakana5BeginnerCount = 0;
+  var katakana5BeginnerTotal = 0;
+  var katakana5IntermediateCount = 0;
+  var katakana5IntermediateTotal = 0;
+  var katakana5AdvancedCount = 0;
+  var katakana5AdvancedTotal = 0;
   var tangoBeginnerCount = 0;
   var tangoBeginnerTotal = 0;
   var tangoIntermediateCount = 0;
@@ -223,6 +247,34 @@ const getProfile = (request, response) => {
                   listData[i].category_id === 4
                 ) {
                   if (listData[i].level_id === 1) {
+                    hiragana4BeginnerCount += 1;
+                    hiragana4BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    hiragana4IntermediateCount += 1;
+                    hiragana4IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    hiragana4AdvancedCount += 1;
+                    hiragana4AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 5
+                ) {
+                  if (listData[i].level_id === 1) {
+                    hiragana5BeginnerCount += 1;
+                    hiragana5BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    hiragana5IntermediateCount += 1;
+                    hiragana5IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    hiragana5AdvancedCount += 1;
+                    hiragana5AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 6
+                ) {
+                  if (listData[i].level_id === 1) {
                     katakana1BeginnerCount += 1;
                     katakana1BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
@@ -234,7 +286,7 @@ const getProfile = (request, response) => {
                   }
                 } else if (
                   listData[i].completed === true &&
-                  listData[i].category_id === 5
+                  listData[i].category_id === 7
                 ) {
                   if (listData[i].level_id === 1) {
                     katakana2BeginnerCount += 1;
@@ -248,7 +300,7 @@ const getProfile = (request, response) => {
                   }
                 } else if (
                   listData[i].completed === true &&
-                  listData[i].category_id === 6
+                  listData[i].category_id === 8
                 ) {
                   if (listData[i].level_id === 1) {
                     katakana3BeginnerCount += 1;
@@ -262,7 +314,35 @@ const getProfile = (request, response) => {
                   }
                 } else if (
                   listData[i].completed === true &&
-                  listData[i].category_id === 7
+                  listData[i].category_id === 9
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana4BeginnerCount += 1;
+                    katakana4BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana4IntermediateCount += 1;
+                    katakana4IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana4AdvancedCount += 1;
+                    katakana4AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 10
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana5BeginnerCount += 1;
+                    katakana5BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana5IntermediateCount += 1;
+                    katakana5IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana5AdvancedCount += 1;
+                    katakana5AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === true &&
+                  listData[i].category_id === 11
                 ) {
                   if (listData[i].level_id === 1) {
                     tangoBeginnerCount += 1;
@@ -276,7 +356,7 @@ const getProfile = (request, response) => {
                   }
                 }else if (
                   listData[i].completed === true &&
-                  listData[i].category_id === 8
+                  listData[i].category_id === 12
                 ) {
                   if (listData[i].level_id === 1) {
                     kaiwaBeginnerCount += 1;
@@ -288,6 +368,7 @@ const getProfile = (request, response) => {
                     kaiwaAdvancedCount += 1;
                     kaiwaAdvancedTotal += 1;
                   }
+
                 } else if (
                   listData[i].completed === false &&
                   listData[i].category_id === 1
@@ -326,6 +407,28 @@ const getProfile = (request, response) => {
                   listData[i].category_id === 4
                 ) {
                   if (listData[i].level_id === 1) {
+                    hiragana4BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    hiragana4IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    hiragana4AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 5
+                ) {
+                  if (listData[i].level_id === 1) {
+                    hiragana5BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    hiragana5IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    hiragana5AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 6
+                ) {
+                  if (listData[i].level_id === 1) {
                     katakana1BeginnerTotal += 1;
                   } else if (listData[i].level_id === 2) {
                     katakana1IntermediateTotal += 1;
@@ -334,7 +437,7 @@ const getProfile = (request, response) => {
                   }
                 } else if (
                   listData[i].completed === false &&
-                  listData[i].category_id === 5
+                  listData[i].category_id === 7
                 ) {
                   if (listData[i].level_id === 1) {
                     katakana2BeginnerTotal += 1;
@@ -345,7 +448,7 @@ const getProfile = (request, response) => {
                   }
                 } else if (
                   listData[i].completed === false &&
-                  listData[i].category_id === 6
+                  listData[i].category_id === 8
                 ) {
                   if (listData[i].level_id === 1) {
                     katakana3BeginnerTotal += 1;
@@ -356,7 +459,29 @@ const getProfile = (request, response) => {
                   }
                 } else if (
                   listData[i].completed === false &&
-                  listData[i].category_id === 7
+                  listData[i].category_id === 9
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana4BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana4IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana4AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 10
+                ) {
+                  if (listData[i].level_id === 1) {
+                    katakana5BeginnerTotal += 1;
+                  } else if (listData[i].level_id === 2) {
+                    katakana5IntermediateTotal += 1;
+                  } else if (listData[i].level_id === 3) {
+                    katakana5AdvancedTotal += 1;
+                  }
+                } else if (
+                  listData[i].completed === false &&
+                  listData[i].category_id === 11
                 ) {
                   if (listData[i].level_id === 1) {
                     tangoBeginnerTotal += 1;
@@ -367,7 +492,7 @@ const getProfile = (request, response) => {
                   }
                 } else if (
                   listData[i].completed === false &&
-                  listData[i].category_id === 8
+                  listData[i].category_id === 12
                 ) {
                   if (listData[i].level_id === 1) {
                     kaiwaBeginnerTotal += 1;
@@ -405,6 +530,22 @@ const getProfile = (request, response) => {
                   advanced_count: hiragana3AdvancedCount,
                   advanced_total: hiragana3AdvancedTotal,
                 },
+                hiragana4: {
+                  beginner_count: hiragana4BeginnerCount,
+                  beginner_total: hiragana4BeginnerTotal,
+                  intermediate_count: hiragana4IntermediateCount,
+                  intermediate_total: hiragana4IntermediateTotal,
+                  advanced_count: hiragana4AdvancedCount,
+                  advanced_total: hiragana4AdvancedTotal,
+                },
+                hiragana5: {
+                  beginner_count: hiragana5BeginnerCount,
+                  beginner_total: hiragana5BeginnerTotal,
+                  intermediate_count: hiragana5IntermediateCount,
+                  intermediate_total: hiragana5IntermediateTotal,
+                  advanced_count: hiragana5AdvancedCount,
+                  advanced_total: hiragana5AdvancedTotal,
+                },
                 katakana1: {
                   beginner_count: katakana1BeginnerCount,
                   beginner_total: katakana1BeginnerTotal,
@@ -428,6 +569,22 @@ const getProfile = (request, response) => {
                   intermediate_total: katakana3IntermediateTotal,
                   advanced_count: katakana3AdvancedCount,
                   advanced_total: katakana3AdvancedTotal,
+                },
+                katakana4: {
+                  beginner_count: katakana4BeginnerCount,
+                  beginner_total: katakana4BeginnerTotal,
+                  intermediate_count: katakana4IntermediateCount,
+                  intermediate_total: katakana4IntermediateTotal,
+                  advanced_count: katakana4AdvancedCount,
+                  advanced_total: katakana4AdvancedTotal,
+                },
+                katakana5: {
+                  beginner_count: katakana5BeginnerCount,
+                  beginner_total: katakana5BeginnerTotal,
+                  intermediate_count: katakana5IntermediateCount,
+                  intermediate_total: katakana5IntermediateTotal,
+                  advanced_count: katakana5AdvancedCount,
+                  advanced_total: katakana5AdvancedTotal,
                 },
                 tango: {
                   beginner_count: tangoBeginnerCount,
